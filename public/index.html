@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+  
+      body {
+  background-image: url('bg2.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+}
+    /* Style the custom dropdown container */
+    .custom-select {
+      position: absolute;
+      left:40%;
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      top:40%;
+    }
+
+    /* Style the default select element */
+    .custom-select select {
+      display: none;
+    }
+
+    /* Style the custom dropdown trigger (styled div) */
+    .custom-select .select-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Style the custom dropdown options (styled divs) */
+    .custom-select .options {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      width: 100%;
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* Style each individual option */
+    .custom-select .option {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* Style the options on hover */
+    .custom-select .option:hover {
+      background-color: #3498db;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="custom-select">
+    <select>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+    </select>
+    <div class="select-trigger">Select an option</div>
+    <div class="options">
+      <div class="option" data-value="1">RRR</div>
+      <div class="option" data-value="2">Option 2</div>
+      <div class="option" data-value="3">Option 3</div>
+      <div class="option" data-value="4">Option 4</div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to handle the custom dropdown functionality
+    const customSelects = document.querySelectorAll('.custom-select');
+
+    customSelects.forEach(select => {
+      const selectTrigger = select.querySelector('.select-trigger');
+      const options = select.querySelector('.options');
+      const optionElements = select.querySelectorAll('.option');
+
+      selectTrigger.addEventListener('click', () => {
+        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+      });
+
+      optionElements.forEach(option => {
+        option.addEventListener('click', () => {
+          selectTrigger.textContent = option.textContent;
+          options.style.display = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
